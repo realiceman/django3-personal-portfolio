@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<br/>
+<div class="text-center">
+    <h1 style="background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 3vw;
+        font-weight: bold;
+        font-family: 'monospace', sans-serif;">I'am Youssef <br/>Programmer DevOps <br/>&amp; Machine Learning Engineer</h1>
+</div>
+
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row border-bottom">
+  {% for project in projects %}
+  <div class="card col-lg-4 col-md-6 border-0">
+   <div class="embed-responsive embed-responsive-16by9">
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="card-img-top embed-responsive-item">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="card-img-top embed-responsive-item">
+    {% endif %}
+   </div>
+    <div class="card-block">
+    <h3 class="card-title">{{ project.title }}</h3>
+    <p class="card-text ">{{ project.description }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br/>
+{% endblock %}
+
